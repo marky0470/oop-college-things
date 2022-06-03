@@ -53,19 +53,19 @@ class Puzzle:
             inputButton = int(input("Enter button number: "))
             
             '''
-            Kim Santos
+            Task 1
             Requirement:
             Buttons adjacent to the inputButton should have their values flipped e.g. True -> False; False -> True
             '''
 
             '''
-            JM Torno
+            Task 2
             Requirement:
             Buttons to the diagonals of the inputButton should have their values flipped
             '''
 
             '''
-            Stephen Sandiego
+            Task 3
             Requirement:
             Should make the flipping neighbors alternate between adjacent and diagonal 
             '''
