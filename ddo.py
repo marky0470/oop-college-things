@@ -49,7 +49,10 @@ class Puzzle:
         while self.checkComplete():
             self.displayBoard()
 
+            # You can access all of the board's contents here
             _gameBoard = self.gameBoard.buttonList
+
+            # This is where we get which button the user would like to select
             inputButton = int(input("Enter button number: "))
             
             '''
@@ -72,7 +75,8 @@ class Puzzle:
 
 class Button:
     """
-    The Button object stores its number/index its state (True/False) and its neighbors and through the changeState method, can have its isEnabled value flipped
+    The Button object stores its number/index, its state (True/False) and its neighbors. Through the changeState method it can have 
+    its isEnabled value flipped
     """
 
     def __init__(self, number, neighbors1):
