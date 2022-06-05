@@ -12,32 +12,37 @@ class Puzzle:
 
     def __init__(self):
         self.buttonList = [
-        self.Button(1, (2,4)),
-        self.Button(2, (1,5,3)),
-        self.Button(3, (2,6)),
-        self.Button(4, (1,5,7)),
-        self.Button(5, (2,4,6,8)),
-        self.Button(6, (3,5,9)),
-        self.Button(7, (4,8)),
-        self.Button(8, (7,5,9)),
-        self.Button(9, (6,8))
+        Button(1, (2,4)),
+        Button(2, (1,5,3)),
+        Button(3, (2,6)),
+        Button(4, (1,5,7)),
+        Button(5, (2,4,6,8)),
+        Button(6, (3,5,9)),
+        Button(7, (4,8)),
+        Button(8, (7,5,9)),
+        Button(9, (6,8))
         ]                                                               
         self.gameDifficulty = int(input("Available difficulties\nEasy\t[1]\nMedium\t[2]\nHard\t[3]\nExpert\t[4]\nPlease select a difficulty: "))
         self.puzzleGameplay()
 
     def displayBoard(self):
-        """Displays the buttons in a 3x3 grid, note that True is printed as an "X" and False is printed as an "O""""
+        """
+        Displays the buttons in a 3x3 grid, note that True is printed as an "X" and False is printed as an "O"
+        """
         for boardRow in range(3):
             for boardColumn in range(3):
                 print("X" if self.buttonList[boardRow + boardColumn].isEnabled else "O", end=" ")
             print("")
 
-    def checkComplete(self):
-        """Checks if the puzzle is complete"""
-        buttonStates = []
-        for currentButton in range(9):
-            buttonStates.append(self.buttonList[currentButton])
-        return True if len(set(buttonStates)) == 1 else False
+    def isIncomplete(self):
+        """
+        Checks if the puzzle is incomplete
+        Return True if incomplete then return value will be used inside the for loop
+        """
+        for currentButton in self.buttonList:
+            if currentButton.isEnabled:
+                return False
+            return True 
 
     def puzzleGameplay(self):
         """
@@ -46,12 +51,11 @@ class Puzzle:
             2. flip said button and all its neighbors
             3. check if all buttons are the same, if not, return to step 1
         """
-        while self.checkComplete():
+        while self.isIncomplete():
             self.displayBoard()
 
             # You can access all of the board's contents here
-            _gameBoard = self.gameBoard.buttonList
-
+            #_gameBoard = self.gameBoard.buttonList
             # This is where we get which button the user would like to select
             inputButton = int(input("Enter button number: "))
             
